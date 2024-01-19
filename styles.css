@@ -1,0 +1,16 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+}
+
+.left-container {
+    height: 100%;
+    width: 25rem;
+    background-color: black;
+}
