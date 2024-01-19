@@ -5,14 +5,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Map Editor</title>
+        <link rel="stylesheet" href="assets/leaflet.css">
+        <link rel="stylesheet" href="assets/mapbox-gl.css">
         <link rel="stylesheet" href="styles.css">
     </head>
 
     <body>
         <main>
             <div class="left-container"></div>
-            <div class="right-container"></div>
+            <div class="right-container">
+                <div id="map"></div>
+            </div>
         </main>
+
+        <script src="assets/leaflet.js"></script>
+        <script src="assets/mapbox-gl.js"></script>
+        <script src="assets/leaflet-mapbox-gl.js"></script>
+        <script src="main.js"></script>
     </body>
 
 </html>
