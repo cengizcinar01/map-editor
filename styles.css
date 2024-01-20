@@ -46,8 +46,21 @@ nav {
     height: 50px;
     border: 0;
     cursor: pointer;
+    background-color: rgb(255, 255, 255);
 }
 
 .nav-btn:hover {
     background-color: rgb(225, 225, 225);
+}
+
+.content {
+    display: none;
+    color: white;
+}
+
+#place:target,
+#style:target,
+#text:target,
+#size:target {
+    display: block;
 }
