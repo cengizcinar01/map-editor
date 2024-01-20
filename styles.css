@@ -21,6 +21,18 @@ main {
     box-shadow: 0 0 20px rgb(150, 150, 150);
 }
 
+.content {
+    display: none;
+    color: white;
+}
+
+#place:target,
+#style:target,
+#text:target,
+#size:target {
+    display: block;
+}
+
 .left-container {
     height: 100%;
     width: 400px;
@@ -55,16 +67,4 @@ nav {
 
 .nav-btn:hover {
     background-color: rgb(225, 225, 225);
-}
-
-.content {
-    display: none;
-    color: white;
-}
-
-#place:target,
-#style:target,
-#text:target,
-#size:target {
-    display: block;
 }
