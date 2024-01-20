@@ -7,10 +7,12 @@ body {
 
 body {
     display: flex;
+    min-width: 500px;
 }
 
 main {
     display: flex;
+    flex-grow: 1;
 }
 
 #map {
@@ -20,14 +22,15 @@ main {
 
 .left-container {
     height: 100%;
-    width: 500px;
+    width: 400px;
     background-color: black;
 }
 
 .right-container {
     height: 100%;
-    width: 100%;
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: auto;
 }
