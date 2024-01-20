@@ -33,6 +33,10 @@ main {
     display: block;
 }
 
+body:not(:has(#style:target)):not(:has(#text:target)):not(:has(#size:target)) #place {
+    display: block;
+}
+
 .left-container {
     height: 100%;
     width: 400px;
