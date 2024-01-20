@@ -35,3 +35,13 @@ main {
     align-items: center;
     overflow: auto;
 }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-btn {
+    width: 100%;
+    height: 5rem;
+}
