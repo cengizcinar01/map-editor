@@ -18,6 +18,7 @@ main {
 #map {
     width: 500px;
     height: 700px;
+    box-shadow: 0 0 20px rgb(150, 150, 150);
 }
 
 .left-container {
