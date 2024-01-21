@@ -87,6 +87,7 @@ nav {
     border: 0;
     cursor: pointer;
     background-color: #f8f9fb;
+    color: rgb(10, 10, 10);
 }
 
 .nav-text:hover {
