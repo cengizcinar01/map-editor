@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-        stroke: #fff;
-        stroke-miterlimit: 76.63;
-        stroke-width: 19.16px;
-      }
-    </style>
-  </defs>
-  <g id="SVGRepo_iconCarrier" data-name="SVGRepo iconCarrier">
-    <path class="cls-1" d="m578.25,260.03c11.56-24.4-13.87-49.83-38.27-38.27l-315.56,149.47c-24.38,11.55-20.84,47.3,5.33,53.85l116.14,29.04,29.04,116.14c6.54,26.18,42.3,29.72,53.85,5.33l149.48-315.56Z"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 23.820312 2.640625 C 24.539062 1.078125 22.921875 -0.539062 21.359375 0.179688 L 1.078125 9.78125 C -0.480469 10.5 -0.238281 12.839844 1.441406 13.261719 L 8.878906 15.121094 L 10.738281 22.558594 C 11.160156 24.238281 13.441406 24.480469 14.21875 22.921875 Z M 23.820312 2.640625 "/>
+</g>
 </svg>
