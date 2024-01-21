@@ -41,7 +41,7 @@ nav {
     justify-content: space-between;
 }
 
-.nav-btn {
+.nav-text {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,7 +56,7 @@ nav {
     background-color: rgb(255, 255, 255);
 }
 
-.nav-btn:hover {
+.nav-text:hover {
     background-color: rgb(225, 225, 225);
 }
 
