@@ -25,6 +25,7 @@
 * {
     font-family: var(--font-family);
     font-size: 12px;
+    text-decoration: none;
 }
 
 html,
@@ -80,7 +81,6 @@ nav {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-decoration: none;
     gap: 5px;
     padding: 25px 0;
     width: 100%;
@@ -88,7 +88,7 @@ nav {
     border: 0;
     cursor: pointer;
     background-color: #58656D;
-    color: var(--primary-text-color)
+    color: var(--primary-text-color);
 }
 
 .nav-text:hover {
