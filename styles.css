@@ -79,3 +79,19 @@ nav {
 body:not(:has(#style:target)):not(:has(#text:target)):not(:has(#size:target)) #place {
     display: block;
 }
+
+.place-content {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-place {
+    width: 90%;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    border: 0;
+}
