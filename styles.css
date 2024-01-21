@@ -3,6 +3,7 @@
     --secondary-bg-color: rgb(243, 243, 243);
     --border-color: rgb(194, 194, 194);
     --shadow-color: rgb(150, 150, 150);
+    --primary-text-color: rgb(50, 50, 50);
     --map-shadow: 0 0 20px var(--shadow-color);
     --font-family: 'Roboto', sans-serif;
 }
@@ -87,7 +88,7 @@ nav {
     border: 0;
     cursor: pointer;
     background-color: #f8f9fb;
-    color: rgb(10, 10, 10);
+    color: var(--primary-text-color)
 }
 
 .nav-text:hover {
