@@ -10,17 +10,25 @@ var gl = L.mapboxGL({
 function showContent(contentId) {
     var contents = ['place', 'style', 'text', 'size'];
 
-    contents.forEach(function(id) {
+    contents.forEach(function (id) {
         var displayStyle = id === contentId ? 'block' : 'none';
         document.getElementById(id).style.display = displayStyle;
     });
 }
 
-document.getElementById('navPlace').addEventListener('click', function() { showContent('place'); });
-document.getElementById('navStyle').addEventListener('click', function() { showContent('style'); });
-document.getElementById('navText').addEventListener('click', function() { showContent('text'); });
-document.getElementById('navSize').addEventListener('click', function() { showContent('size'); });
+document.getElementById('navPlace').addEventListener('click', function () {
+    showContent('place');
+});
+document.getElementById('navStyle').addEventListener('click', function () {
+    showContent('style');
+});
+document.getElementById('navText').addEventListener('click', function () {
+    showContent('text');
+});
+document.getElementById('navSize').addEventListener('click', function () {
+    showContent('size');
+});
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     showContent('place');
 });
