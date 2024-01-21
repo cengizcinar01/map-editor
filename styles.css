@@ -81,7 +81,7 @@ body:not(:has(#style:target)):not(:has(#text:target)):not(:has(#size:target)) #p
 }
 
 .place-content {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
