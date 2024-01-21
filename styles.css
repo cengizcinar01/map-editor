@@ -21,22 +21,6 @@ main {
     box-shadow: 0 0 20px rgb(150, 150, 150);
 }
 
-.content {
-    display: none;
-    color: white;
-}
-
-#place:target,
-#style:target,
-#text:target,
-#size:target {
-    display: block;
-}
-
-body:not(:has(#style:target)):not(:has(#text:target)):not(:has(#size:target)) #place {
-    display: block;
-}
-
 .left-container {
     height: 100%;
     width: 400px;
@@ -72,10 +56,26 @@ nav {
     background-color: rgb(255, 255, 255);
 }
 
+.nav-btn:hover {
+    background-color: rgb(225, 225, 225);
+}
+
 .nav-icon {
     width: 40px;
 }
 
-.nav-btn:hover {
-    background-color: rgb(225, 225, 225);
+.content {
+    display: none;
+    color: white;
+}
+
+#place:target,
+#style:target,
+#text:target,
+#size:target {
+    display: block;
+}
+
+body:not(:has(#style:target)):not(:has(#text:target)):not(:has(#size:target)) #place {
+    display: block;
 }
