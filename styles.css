@@ -22,6 +22,9 @@ main {
 }
 
 .left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
     width: 400px;
     background-color: black;
@@ -65,6 +68,7 @@ nav {
 }
 
 .content {
+    flex-grow: 1;
     display: none;
     color: white;
 }
@@ -78,6 +82,10 @@ nav {
 
 body:not(:has(#style:target)):not(:has(#text:target)):not(:has(#size:target)) #place {
     display: block;
+}
+
+.left-container-footer {
+    margin: 50px auto;
 }
 
 .place-content {
