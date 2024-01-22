@@ -62,6 +62,8 @@ main {
 }
 
 .right-container {
+    background-color: #ffffff;
+    z-index: 1000;
     height: 100%;
     flex-grow: 1;
     display: flex;
@@ -103,7 +105,7 @@ nav {
     color: rgb(88, 101, 109);
     border-width: 5px 0 0 0;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to right, #42B395   0, #68c2aa 51%, #42B395 100%);
+    border-image-source: linear-gradient(to right, #42B395 0, #68c2aa 51%, #42B395 100%);
     z-index: 1000;
     box-shadow: 10px 0 5px -5px rgba(0, 0, 0, .2), -10px 0 5px -5px rgba(0, 0, 0, .2);
 }
