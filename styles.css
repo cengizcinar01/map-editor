@@ -24,7 +24,6 @@
     --nav-btn-bg: rgb(88, 101, 109);
     --nav-btn-hover-bg: rgb(79, 91, 98);
     --nav-btn-active-bg: rgb(70, 81, 87);
-    --nav-btn-selected-bg: rgb(252, 252, 252);
     --font-family: 'Roboto', sans-serif;
 }
 
@@ -105,7 +104,7 @@ nav {
 }
 
 .nav-btn-selected {
-    background-color: var(--nav-btn-selected-bg);
+    background-color: var(--primary-bg-color);
     color: var(--nav-btn-hover-bg);
     border-top: 5px solid transparent;
     border-image: linear-gradient(to right, #42B395 0, #68c2aa 51%, #42B395 100%);
