@@ -14,8 +14,10 @@
 
 :root {
     --primary-bg-color: rgb(248, 249, 251);
-    --secondary-bg-color: rgb(243, 243, 243);
+    --secondary-bg-color: rgb(255, 255, 255);
+    --footer-bg-color: rgb(243, 243, 243);
     --border-color: rgb(194, 194, 194);
+    --footer-border-color: rgb(220, 220, 220);
     --shadow-color: rgb(150, 150, 150);
     --primary-text-color: rgb(255, 255, 255);
     --map-shadow: 0 0 20px var(--shadow-color);
@@ -126,11 +128,11 @@ nav {
 }
 
 .left-container-footer {
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--footer-border-color);
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--footer-bg-color);
     padding: 40px 0;
     box-sizing: border-box;
 }
