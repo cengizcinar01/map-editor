@@ -86,7 +86,7 @@ nav {
     width: 100%;
     border: 0;
     cursor: pointer;
-    background-color: rgb(88, 101, 109);
+    background-color: #58656d;
     color: rgb(238, 240, 240);
     box-shadow: inset 0 -7px 3px -3px rgba(0, 0, 0, .2);
 }
