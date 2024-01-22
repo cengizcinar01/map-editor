@@ -14,21 +14,27 @@ function showContent(contentId) {
         var displayStyle = id === contentId ? 'block' : 'none';
         document.getElementById(id).style.display = displayStyle;
     });
-}
 
-document.getElementById('navPlace').addEventListener('click', function () {
-    showContent('place');
-});
-document.getElementById('navStyle').addEventListener('click', function () {
-    showContent('style');
-});
-document.getElementById('navText').addEventListener('click', function () {
-    showContent('text');
-});
-document.getElementById('navSize').addEventListener('click', function () {
-    showContent('size');
-});
+    document.querySelectorAll('.nav-btn, .nav-btn-selected').forEach((button) => {
+        if (button.id === 'nav' + contentId.charAt(0).toUpperCase() + contentId.slice(1)) {
+            button.classList.add('nav-btn-selected');
+            button.classList.remove('nav-btn');
+            button.querySelector('.nav-icon').src = `assets/img/${contentId}-selected.svg`;
+        } else {
+            button.classList.add('nav-btn');
+            button.classList.remove('nav-btn-selected');
+            var unselectedContentId = button.id.replace('nav', '').toLowerCase();
+            button.querySelector('.nav-icon').src = `assets/img/${unselectedContentId}.svg`;
+        }
+    });
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     showContent('place');
+});
+
+['Place', 'Style', 'Text', 'Size'].forEach(function (content) {
+    document.getElementById('nav' + content).addEventListener('click', function () {
+        showContent(content.toLowerCase());
+    });
 });
