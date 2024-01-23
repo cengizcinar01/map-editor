@@ -198,5 +198,14 @@ nav {
 }
 
 .search-result-item:active {
-    box-shadow: 0 0 0 2px #cdd1d3;
+    box-shadow: 0 0 0 2px #dee0e2;
+}
+
+.search-result-item-selected {
+    background-image: linear-gradient(to right, #42B395 0, #68c2aa 51%, #42B395 100%);
+    color: white;
+}
+
+.search-result-item-selected:active {
+    box-shadow: none;
 }
