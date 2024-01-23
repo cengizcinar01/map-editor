@@ -22,8 +22,15 @@ const updateSearchResults = (results) => {
         const resultItem = document.createElement('div');
         resultItem.className = 'search-result-item';
         resultItem.textContent = name;
-        resultItem.onclick = () => map.setView([coordinates[1], coordinates[0]], 15);
+        resultItem.onclick = () => {
+            document.querySelectorAll('.search-result-item').forEach((el) => {
+                el.classList.remove('search-result-item-selected');
+            });
+
+            resultItem.classList.add('search-result-item-selected');
+
+            map.setView([coordinates[1], coordinates[0]], 15);
+        };
         resultsContainer.appendChild(resultItem);
     });
 };
-    
