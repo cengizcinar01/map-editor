@@ -1,4 +1,4 @@
-const map = L.map('map', { minZoom: 9, maxZoom: 14 }).setView([38.912753, -77.032194], 15);
+const map = L.map('map', { minZoom: 9, maxZoom: 14, zoomDelta: 0.25, zoomSnap: 0.25, wheelPxPerZoomLevel: 50 }).setView([38.912753, -77.032194], 15);
 
 L.mapboxGL({ style: 'https://tile.mapservice.xyz/styles/midnight/style.json' }).addTo(map);
 
@@ -6,7 +6,7 @@ document.getElementById('searchPlace').addEventListener('input', (e) => searchLo
 
 const searchLocation = async (query) => {
     try {
-        const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(query)}`);
+        const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&osm_tag=place`);
         const data = await response.json();
         updateSearchResults(data.features);
     } catch (err) {
@@ -18,19 +18,21 @@ const updateSearchResults = (results) => {
     const resultsContainer = document.getElementById('searchResults');
     resultsContainer.innerHTML = '';
 
-    results.slice(0, 10).forEach(({ properties: { name }, geometry: { coordinates } }) => {
-        const resultItem = document.createElement('div');
-        resultItem.className = 'search-result-item';
-        resultItem.textContent = name;
-        resultItem.onclick = () => {
-            document.querySelectorAll('.search-result-item').forEach((el) => {
-                el.classList.remove('search-result-item-selected');
-            });
+    results.slice(0, 10).forEach(({ properties: { name, osm_key }, geometry: { coordinates } }) => {
+        if (name && name.length >= 3 && osm_key === 'place') {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            resultItem.textContent = name;
+            resultItem.onclick = () => {
+                document.querySelectorAll('.search-result-item').forEach((el) => {
+                    el.classList.remove('search-result-item-selected');
+                });
 
-            resultItem.classList.add('search-result-item-selected');
+                resultItem.classList.add('search-result-item-selected');
 
-            map.setView([coordinates[1], coordinates[0]], 15);
-        };
-        resultsContainer.appendChild(resultItem);
+                map.setView([coordinates[1], coordinates[0]], 11);
+            };
+            resultsContainer.appendChild(resultItem);
+        }
     });
 };
