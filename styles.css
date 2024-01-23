@@ -107,7 +107,7 @@ nav {
 .nav-btn-selected {
     background-color: var(--primary-bg-color);
     color: var(--btn-hover-bg);
-    border-top: 5px solid transparent;
+    border-top: 4px solid transparent;
     border-image: linear-gradient(to right, #42B395 0, #68c2aa 51%, #42B395 100%);
     border-image-slice: 1;
     z-index: 1000;
