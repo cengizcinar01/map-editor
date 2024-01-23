@@ -202,8 +202,12 @@ nav {
 }
 
 .search-result-item-selected {
-    background-image: linear-gradient(to right, #42B395 0, #68c2aa 51%, #42B395 100%);
+    background: var(--btn-bg);
     color: white;
+}
+
+.search-result-item-selected:hover {
+    background-color: var(--btn-bg);
 }
 
 .search-result-item-selected:active {
