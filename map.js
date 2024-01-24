@@ -5,9 +5,24 @@ const map = L.map('map', {
     wheelPxPerZoomLevel: 60,
 }).setView([52.502879, 13.409609], 10.5);
 
-L.mapboxGL({
-    style: 'https://tile.mapservice.xyz/styles/midnight/style.json',
-}).addTo(map);
+let currentLayer;
+
+function changeMapStyle(styleUrl) {
+    if (currentLayer) {
+        map.removeLayer(currentLayer);
+    }
+    currentLayer = L.mapboxGL({ style: styleUrl }).addTo(map);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    changeMapStyle('https://tile.mapservice.xyz/styles/midnight/style.json');
+    document.getElementById('elegantStyle').addEventListener('click', function () {
+        changeMapStyle('https://tile.mapservice.xyz/styles/elegant/style.json');
+    });
+    document.getElementById('midnightStyle').addEventListener('click', function () {
+        changeMapStyle('https://tile.mapservice.xyz/styles/midnight/style.json');
+    });
+});
 
 map.on('moveend', function () {
     var center = map.getCenter();
