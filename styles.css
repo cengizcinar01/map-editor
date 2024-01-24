@@ -31,7 +31,6 @@
     font-family: var(--font-family);
     font-size: 12px;
     text-decoration: none;
-    letter-spacing: 0.05em;
 }
 
 html,
@@ -85,8 +84,9 @@ nav {
     user-select: none;
 }
 
-.nav-text{
-    font-size: 1.1em;
+.nav-text {
+    font-size: 1em;
+    letter-spacing: 0.05em;
 }
 
 .nav-btn,
@@ -216,4 +216,36 @@ nav {
 
 .search-result-item-selected:active {
     box-shadow: none;
+}
+
+.style-content {
+    margin: 30px 20px;
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+}
+
+.map-style {
+    text-align: center;
+}
+
+.map-style-button {
+    width: 70px;
+    height: 70px;
+    border: none;
+    cursor: pointer;
+    background-size: cover;
+}
+
+#elegantStyle {
+    background-image: url('assets/img/style/elegant.png');
+}
+
+#midnightStyle {
+    background-image: url('assets/img/style/midnight.png');
+}
+
+.style-name {
+    margin-top: 5px;
+    font-size: 14px;
 }
