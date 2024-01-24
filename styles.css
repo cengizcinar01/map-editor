@@ -219,20 +219,24 @@ nav {
 }
 
 .style-content {
-    margin: 30px 20px;
+    width: 100%;
+    margin: 30px 15px;
     display: flex;
-    justify-content: left;
-    gap: 10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .map-style {
+    width: calc((100% - 15 * 3px) / 4);
     text-align: center;
 }
 
 .map-style-button {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     background-size: cover;
 }
@@ -243,6 +247,14 @@ nav {
 
 #midnightStyle {
     background-image: url('assets/img/style/midnight.png');
+}
+
+#navyStyle {
+    background-image: url('assets/img/style/navy.png');
+}
+
+#purpleStyle {
+    background-image: url('assets/img/style/purple.png');
 }
 
 .style-name {
