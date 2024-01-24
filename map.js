@@ -1,6 +1,18 @@
-const map = L.map('map', { minZoom: 9, maxZoom: 14, zoomDelta: 0.25, zoomSnap: 0.25, wheelPxPerZoomLevel: 50 }).setView([38.912753, -77.032194], 15);
+const map = L.map('map', {
+    minZoom: 9,
+    maxZoom: 14,
+    zoomSnap: 0.1,
+    wheelPxPerZoomLevel: 60,
+}).setView([52.502879, 13.409609], 10.5);
 
-L.mapboxGL({ style: 'https://tile.mapservice.xyz/styles/midnight/style.json' }).addTo(map);
+L.mapboxGL({
+    style: 'https://tile.mapservice.xyz/styles/midnight/style.json',
+}).addTo(map);
+
+map.on('moveend', function () {
+    var center = map.getCenter();
+    console.log(`[${center.lat.toFixed(6)}, ${center.lng.toFixed(6)}], Zoom: ${map.getZoom()}`);
+});
 
 document.getElementById('searchPlace').addEventListener('input', (e) => searchLocation(e.target.value));
 
