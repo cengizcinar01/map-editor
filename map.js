@@ -45,11 +45,22 @@ const updateSearchResults = (results) => {
     const resultsContainer = document.getElementById('searchResults');
     resultsContainer.innerHTML = '';
 
-    results.slice(0, 10).forEach(({ properties: { name, osm_key }, geometry: { coordinates } }) => {
+    results.slice(0, 10).forEach(({ properties: { name, osm_key, countrycode }, geometry: { coordinates } }) => {
         if (name && name.length >= 3 && osm_key === 'place') {
             const resultItem = document.createElement('div');
             resultItem.className = 'search-result-item';
-            resultItem.textContent = name;
+
+            if (countrycode) {
+                const flagImg = document.createElement('img');
+                flagImg.src = `https://flagcdn.com/16x12/${countrycode.toLowerCase()}.png`;
+                flagImg.alt = `Flagge von ${countrycode}`;
+                flagImg.className = 'flag-image';
+                resultItem.appendChild(flagImg);
+            }
+
+            const nameText = document.createTextNode(name);
+            resultItem.appendChild(nameText);
+
             resultItem.onclick = () => {
                 document.querySelectorAll('.search-result-item').forEach((el) => {
                     el.classList.remove('search-result-item-selected');
@@ -59,6 +70,7 @@ const updateSearchResults = (results) => {
 
                 map.setView([coordinates[1], coordinates[0]], 11);
             };
+
             resultsContainer.appendChild(resultItem);
         }
     });
