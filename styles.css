@@ -195,6 +195,9 @@ nav {
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .search-result-item:hover {
