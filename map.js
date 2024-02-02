@@ -24,6 +24,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+const locations = {
+    London: [51.5074, -0.1278],
+    Rome: [41.9028, 12.4964],
+    Paris: [48.8566, 2.3522],
+    Istanbul: [41.0082, 28.9784],
+    Barcelona: [41.3851, 2.1734],
+    Miami: [25.7617, -80.1918],
+    Florence: [43.7696, 11.2558],
+};
+
+function selectPlace(selectedElement) {
+    document.querySelectorAll('.search-result-item-selected').forEach((el) => {
+        el.classList.remove('search-result-item-selected');
+    });
+
+    selectedElement.classList.add('search-result-item-selected');
+}
+
+document.querySelectorAll('.fav-btn').forEach((button) => {
+    button.addEventListener('click', function () {
+        const placeName = this.textContent.trim();
+        if (locations[placeName]) {
+            const [lat, lng] = locations[placeName];
+            map.setView([lat, lng], 11);
+            selectPlace(this);
+        }
+    });
+});
+
 map.on('moveend', function () {
     var center = map.getCenter();
     console.log(`[${center.lat.toFixed(6)}, ${center.lng.toFixed(6)}], Zoom: ${map.getZoom()}`);
@@ -35,7 +64,6 @@ const updateSearchResults = (results, query) => {
     const resultsContainer = document.getElementById('searchResults');
     resultsContainer.innerHTML = '';
 
-    // Check if query length is less than 3 characters
     if (query && query.length < 3) {
         const message = document.createElement('div');
         message.className = 'search-result-item';
@@ -59,13 +87,8 @@ const updateSearchResults = (results, query) => {
                 resultItem.appendChild(nameText);
 
                 resultItem.onclick = () => {
-                    document.querySelectorAll('.search-result-item').forEach((el) => {
-                        el.classList.remove('search-result-item-selected');
-                    });
-
-                    resultItem.classList.add('search-result-item-selected');
-
                     map.setView([coordinates[1], coordinates[0]], 11);
+                    selectPlace(resultItem);
                 };
 
                 resultsContainer.appendChild(resultItem);
