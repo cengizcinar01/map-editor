@@ -33,7 +33,7 @@ document.getElementById('searchPlace').addEventListener('input', (e) => searchLo
 
 const searchLocation = async (query) => {
     try {
-        const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&osm_tag=place`);
+        const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&layer=city&layer=district`);
         const data = await response.json();
         updateSearchResults(data.features);
     } catch (err) {
