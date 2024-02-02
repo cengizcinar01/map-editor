@@ -176,7 +176,7 @@ nav {
 
 .favorite-place>h2 {
     margin: 0.8rem 0 1.2rem 0.5rem;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .search-place {
@@ -211,11 +211,13 @@ nav {
     gap: 10px;
 }
 
-.search-result-item:hover {
+.search-result-item:hover,
+.fav-btn:hover {
     background-color: #dee0e2;
 }
 
-.search-result-item:active {
+.search-result-item:active,
+.fav-btn:active {
     box-shadow: 0 0 0 2px #dee0e2;
 }
 
