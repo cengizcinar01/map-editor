@@ -58,6 +58,17 @@ map.on('moveend', function () {
     console.log(`[${center.lat.toFixed(6)}, ${center.lng.toFixed(6)}], Zoom: ${map.getZoom()}`);
 });
 
+document.getElementById('searchPlace').addEventListener('input', (e) => {
+    const searchValue = e.target.value;
+    const favoritePlacesContainer = document.getElementById('favoritePlaces');
+
+    if (searchValue.length > 0) {
+        favoritePlacesContainer.style.display = 'none';
+    } else {
+        favoritePlacesContainer.style.display = '';
+    }
+});
+
 document.getElementById('searchPlace').addEventListener('input', (e) => searchLocation(e.target.value));
 
 const updateSearchResults = (results, query) => {
