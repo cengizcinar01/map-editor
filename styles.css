@@ -169,6 +169,11 @@ nav {
     flex-direction: column;
 }
 
+.favorite-place {
+    width: 90%;
+    margin-top: 1rem;
+}
+
 .search-place {
     width: 90%;
     padding: 10px 15px;
@@ -183,7 +188,8 @@ nav {
     width: 90%;
 }
 
-.search-result-item {
+.search-result-item,
+.fav-btn {
     width: 100%;
     box-sizing: border-box;
     display: block;
