@@ -31,47 +31,55 @@ map.on('moveend', function () {
 
 document.getElementById('searchPlace').addEventListener('input', (e) => searchLocation(e.target.value));
 
+const updateSearchResults = (results, query) => {
+    const resultsContainer = document.getElementById('searchResults');
+    resultsContainer.innerHTML = '';
+
+    // Check if query length is less than 3 characters
+    if (query && query.length < 3) {
+        const message = document.createElement('div');
+        message.className = 'search-result-item';
+        message.textContent = 'Please enter at least 3 letters';
+        resultsContainer.appendChild(message);
+    } else {
+        results.slice(0, 10).forEach(({ properties: { name, osm_key, countrycode }, geometry: { coordinates } }) => {
+            if (name && name.length >= 3 && osm_key === 'place') {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+
+                if (countrycode) {
+                    const flagImg = document.createElement('img');
+                    flagImg.src = `https://flagcdn.com/16x12/${countrycode.toLowerCase()}.png`;
+                    flagImg.alt = `Flagge von ${countrycode}`;
+                    flagImg.className = 'flag-image';
+                    resultItem.appendChild(flagImg);
+                }
+
+                const nameText = document.createTextNode(name);
+                resultItem.appendChild(nameText);
+
+                resultItem.onclick = () => {
+                    document.querySelectorAll('.search-result-item').forEach((el) => {
+                        el.classList.remove('search-result-item-selected');
+                    });
+
+                    resultItem.classList.add('search-result-item-selected');
+
+                    map.setView([coordinates[1], coordinates[0]], 11);
+                };
+
+                resultsContainer.appendChild(resultItem);
+            }
+        });
+    }
+};
+
 const searchLocation = async (query) => {
     try {
         const response = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&layer=city&layer=district`);
         const data = await response.json();
-        updateSearchResults(data.features);
+        updateSearchResults(data.features, query);
     } catch (err) {
         console.error(err);
     }
-};
-
-const updateSearchResults = (results) => {
-    const resultsContainer = document.getElementById('searchResults');
-    resultsContainer.innerHTML = '';
-
-    results.slice(0, 10).forEach(({ properties: { name, osm_key, countrycode }, geometry: { coordinates } }) => {
-        if (name && name.length >= 3 && osm_key === 'place') {
-            const resultItem = document.createElement('div');
-            resultItem.className = 'search-result-item';
-
-            if (countrycode) {
-                const flagImg = document.createElement('img');
-                flagImg.src = `https://flagcdn.com/16x12/${countrycode.toLowerCase()}.png`;
-                flagImg.alt = `Flagge von ${countrycode}`;
-                flagImg.className = 'flag-image';
-                resultItem.appendChild(flagImg);
-            }
-
-            const nameText = document.createTextNode(name);
-            resultItem.appendChild(nameText);
-
-            resultItem.onclick = () => {
-                document.querySelectorAll('.search-result-item').forEach((el) => {
-                    el.classList.remove('search-result-item-selected');
-                });
-
-                resultItem.classList.add('search-result-item-selected');
-
-                map.setView([coordinates[1], coordinates[0]], 11);
-            };
-
-            resultsContainer.appendChild(resultItem);
-        }
-    });
 };
