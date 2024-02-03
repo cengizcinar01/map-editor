@@ -14,13 +14,12 @@ function changeMapStyle(styleUrl) {
     currentLayer = L.mapboxGL({ style: styleUrl }).addTo(map);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    changeMapStyle('https://tile.mapservice.xyz/styles/midnight/style.json');
-    document.getElementById('elegantStyle').addEventListener('click', function () {
-        changeMapStyle('https://tile.mapservice.xyz/styles/elegant/style.json');
-    });
-    document.getElementById('midnightStyle').addEventListener('click', function () {
-        changeMapStyle('https://tile.mapservice.xyz/styles/midnight/style.json');
+document.addEventListener('DOMContentLoaded', () => {
+    const styles = ['elegant', 'midnight'];
+    const changeMapStyleTo = (style) => changeMapStyle(`https://tile.mapservice.xyz/styles/${style}/style.json`);
+    changeMapStyleTo('midnight');
+    styles.forEach((style) => {
+        document.getElementById(`${style}Style`).addEventListener('click', () => changeMapStyleTo(style));
     });
 });
 
