@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+map.on('moveend', function () {
+    var center = map.getCenter();
+    console.log(`[${center.lat.toFixed(6)}, ${center.lng.toFixed(6)}], Zoom: ${map.getZoom()}`);
+});
+
 const locations = {
     London: [51.5074, -0.1278],
     Rome: [41.9028, 12.4964],
@@ -31,28 +36,20 @@ const locations = {
     Florence: [43.7696, 11.2558],
 };
 
-function selectPlace(selectedElement) {
-    document.querySelectorAll('.search-result-item-selected').forEach((el) => {
-        el.classList.remove('search-result-item-selected');
-    });
-
+const selectPlace = (selectedElement) => {
+    document.querySelectorAll('.search-result-item-selected').forEach((el) => el.classList.remove('search-result-item-selected'));
     selectedElement.classList.add('search-result-item-selected');
-}
+};
 
 document.querySelectorAll('.fav-btn').forEach((button) => {
-    button.addEventListener('click', function () {
-        const placeName = this.textContent.trim();
-        if (locations[placeName]) {
-            const [lat, lng] = locations[placeName];
-            map.setView([lat, lng], 11);
-            selectPlace(this);
+    button.addEventListener('click', () => {
+        const placeName = button.textContent.trim();
+        const location = locations[placeName];
+        if (location) {
+            map.setView(location, 11);
+            selectPlace(button);
         }
     });
-});
-
-map.on('moveend', function () {
-    var center = map.getCenter();
-    console.log(`[${center.lat.toFixed(6)}, ${center.lng.toFixed(6)}], Zoom: ${map.getZoom()}`);
 });
 
 document.getElementById('searchPlace').addEventListener('input', (e) => {
