@@ -53,14 +53,7 @@ document.querySelectorAll('.fav-btn').forEach((button) => {
 });
 
 document.getElementById('searchPlace').addEventListener('input', (e) => {
-    const searchValue = e.target.value;
-    const favoritePlacesContainer = document.getElementById('favoritePlaces');
-
-    if (searchValue.length > 0) {
-        favoritePlacesContainer.style.display = 'none';
-    } else {
-        favoritePlacesContainer.style.display = '';
-    }
+    document.getElementById('favoritePlaces').style.display = e.target.value.length > 0 ? 'none' : '';
 });
 
 document.getElementById('searchPlace').addEventListener('input', (e) => searchLocation(e.target.value));
