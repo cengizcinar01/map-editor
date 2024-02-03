@@ -7,12 +7,10 @@ const map = L.map('map', {
 
 let currentLayer;
 
-function changeMapStyle(styleUrl) {
-    if (currentLayer) {
-        map.removeLayer(currentLayer);
-    }
+const changeMapStyle = (styleUrl) => {
+    if (currentLayer) map.removeLayer(currentLayer);
     currentLayer = L.mapboxGL({ style: styleUrl }).addTo(map);
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const styles = ['elegant', 'midnight'];
