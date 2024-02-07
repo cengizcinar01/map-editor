@@ -60,39 +60,22 @@ document.getElementById('searchPlace').addEventListener('input', (e) => searchLo
 
 const updateSearchResults = (results, query) => {
     const resultsContainer = document.getElementById('searchResults');
-    resultsContainer.innerHTML = '';
+    resultsContainer.innerHTML =
+        query && query.length < 3
+            ? `<div class="search-result-item">Please enter at least 3 letters</div>`
+            : results
+                  .filter(({ properties: { name, osm_key } }) => name?.length >= 3 && osm_key === 'place')
+                  .slice(0, 10)
+                  .map(
+                      ({ properties: { name, countrycode }, geometry: { coordinates } }) =>
+                          `<div class="search-result-item" onclick="map.setView([${coordinates[1]}, ${coordinates[0]}], 11); selectPlace(this);">
+                    ${countrycode ? `<img src="https://flagcdn.com/16x12/${countrycode.toLowerCase()}.png" alt="Flagge von ${countrycode}" class="flag-image">` : ''}
+                    ${name}
+                </div>`
+                  )
+                  .join('');
 
-    if (query && query.length < 3) {
-        const message = document.createElement('div');
-        message.className = 'search-result-item';
-        message.textContent = 'Please enter at least 3 letters';
-        resultsContainer.appendChild(message);
-    } else {
-        results.slice(0, 10).forEach(({ properties: { name, osm_key, countrycode }, geometry: { coordinates } }) => {
-            if (name && name.length >= 3 && osm_key === 'place') {
-                const resultItem = document.createElement('div');
-                resultItem.className = 'search-result-item';
-
-                if (countrycode) {
-                    const flagImg = document.createElement('img');
-                    flagImg.src = `https://flagcdn.com/16x12/${countrycode.toLowerCase()}.png`;
-                    flagImg.alt = `Flagge von ${countrycode}`;
-                    flagImg.className = 'flag-image';
-                    resultItem.appendChild(flagImg);
-                }
-
-                const nameText = document.createTextNode(name);
-                resultItem.appendChild(nameText);
-
-                resultItem.onclick = () => {
-                    map.setView([coordinates[1], coordinates[0]], 11);
-                    selectPlace(resultItem);
-                };
-
-                resultsContainer.appendChild(resultItem);
-            }
-        });
-    }
+    resultsContainer.innerHTML += resultsContainer.innerHTML ? '' : `<div class="search-result-item">No results found</div>`;
 };
 
 const searchLocation = async (query) => {
