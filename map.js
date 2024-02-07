@@ -104,3 +104,16 @@ const searchLocation = async (query) => {
         console.error(err);
     }
 };
+
+document.querySelector('.generate').addEventListener('click', function () {
+    let currentStyle = 'midnight';
+
+    let center = map.getCenter();
+    let zoom = map.getZoom();
+
+    let adjustedZoom = zoom + 2.95;
+
+    let url = `http://127.0.0.1:3000/img?design=$2&style=${currentStyle}&size=A1&square=true&display=inline&place=miami&user=test&lng=${center.lng}&lat=${center.lat}&zoom=${adjustedZoom}`;
+
+    window.open(url, '_blank');
+});
