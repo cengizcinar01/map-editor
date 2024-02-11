@@ -60,22 +60,30 @@ document.getElementById('searchPlace').addEventListener('input', (e) => searchLo
 
 const updateSearchResults = (results, query) => {
     const resultsContainer = document.getElementById('searchResults');
-    resultsContainer.innerHTML =
-        query && query.length < 3
-            ? `<div class="search-result-item">Please enter at least 3 letters</div>`
-            : results
-                  .filter(({ properties: { name, osm_key } }) => name?.length >= 3 && osm_key === 'place')
-                  .slice(0, 10)
-                  .map(
-                      ({ properties: { name, countrycode }, geometry: { coordinates } }) =>
-                          `<div class="search-result-item" onclick="map.setView([${coordinates[1]}, ${coordinates[0]}], 11); selectPlace(this);">
-                    ${countrycode ? `<img src="https://flagcdn.com/16x12/${countrycode.toLowerCase()}.png" alt="Flagge von ${countrycode}" class="flag-image">` : ''}
-                    ${name}
-                </div>`
-                  )
-                  .join('');
 
-    resultsContainer.innerHTML += resultsContainer.innerHTML ? '' : `<div class="search-result-item">No results found</div>`;
+    if (!query) {
+        resultsContainer.innerHTML = '';
+        return;
+    }
+
+    const filteredResults = results.filter(({ properties: { name, osm_key } }) => name?.length >= 3 && osm_key === 'place').slice(0, 10);
+
+    if (query.length < 3) {
+        resultsContainer.innerHTML = `<div class="search-result-item">Please enter at least 3 letters</div>`;
+    } else if (filteredResults.length > 0) {
+        const resultsHTML = filteredResults
+            .map(
+                ({ properties: { name, countrycode }, geometry: { coordinates } }) =>
+                    `<div class="search-result-item" onclick="map.setView([${coordinates[1]}, ${coordinates[0]}], 11); selectPlace(this);">
+                        ${countrycode ? `<img src="https://flagcdn.com/16x12/${countrycode.toLowerCase()}.png" alt="Flagge von ${countrycode}" class="flag-image">` : ''}
+                        ${name}
+                    </div>`
+            )
+            .join('');
+        resultsContainer.innerHTML = resultsHTML;
+    } else {
+        resultsContainer.innerHTML = `<div class="search-result-item">No results found</div>`;
+    }
 };
 
 const searchLocation = async (query) => {
