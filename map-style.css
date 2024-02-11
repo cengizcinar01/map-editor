@@ -1,0 +1,32 @@
+.map-style-top-1,
+.map-style-right-1,
+.map-style-bottom-1,
+.map-style-left-1 {
+    background-color: black;
+    z-index: 999;
+    position: absolute;
+}
+
+.map-style-top-1 {
+    top: 0;
+    width: 100%;
+    height: 30px;
+}
+
+.map-style-right-1 {
+    right: 0;
+    width: 30px;
+    height: 100%;
+}
+
+.map-style-bottom-1 {
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+}
+
+.map-style-left-1 {
+    left: 0;
+    width: 30px;
+    height: 100%;
+}
