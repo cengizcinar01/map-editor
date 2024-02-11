@@ -2,9 +2,9 @@
 .map-design-right-1,
 .map-design-bottom-1,
 .map-design-left-1 {
-    background-color: black;
-    z-index: 1000;
+    background-color: rgb(26, 26, 26);
     position: absolute;
+    z-index: 999;
 }
 
 .map-design-top-2,
@@ -13,6 +13,7 @@
 .map-design-left-2 {
     background-color: rgb(255, 255, 255);
     position: absolute;
+    z-index: 998;
 }
 
 /* Top */
