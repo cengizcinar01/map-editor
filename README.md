@@ -14,4 +14,4 @@ This project is actively under development and has not reached its final state. 
 
 ## Demo
 
-You can check out the live demo [here](https://cengizcinar01.github.io/map-editor/).
+You can check out the live demo [here](https://map-editor.cengizcinar.com/).
