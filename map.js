@@ -36,15 +36,14 @@ const locations = {
     Florence: [43.7696, 11.2558],
 };
 
-const selectPlace = (selectedElement) => {
+function selectPlace(selectedElement) {
     document.querySelectorAll('.search-result-item-selected').forEach((el) => el.classList.remove('search-result-item-selected'));
     selectedElement.classList.add('search-result-item-selected');
-};
+}
 
 document.querySelectorAll('.fav-btn').forEach((button) => {
     button.addEventListener('click', () => {
-        const placeName = button.textContent.trim();
-        const location = locations[placeName];
+        const location = locations[button.textContent.trim()];
         if (location) {
             map.setView(location, 11);
             selectPlace(button);
@@ -53,7 +52,7 @@ document.querySelectorAll('.fav-btn').forEach((button) => {
 });
 
 document.getElementById('searchPlace').addEventListener('input', (e) => {
-    document.getElementById('favoritePlaces').style.display = e.target.value.length > 0 ? 'none' : '';
+    document.getElementById('favoritePlaces').style.display = e.target.value.length ? 'none' : '';
 });
 
 document.getElementById('searchPlace').addEventListener('input', (e) => searchLocation(e.target.value));
